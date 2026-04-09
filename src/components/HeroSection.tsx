@@ -35,7 +35,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.8 }}
         >
-          Alya
+          Names
         </motion.h1>
 
         <motion.div
@@ -55,7 +55,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 1 }}
         >
-          Daniel
+          Names
         </motion.h1>
 
         <motion.p
