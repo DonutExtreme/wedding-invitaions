@@ -17,6 +17,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5   # ✅ IMPORTANT
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -25,13 +28,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build
         run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist   # ✅ THIS IS THE KEY
+          path: ./dist   # ✅ MUST be dist
 
   deploy:
     environment:
@@ -42,6 +45,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
