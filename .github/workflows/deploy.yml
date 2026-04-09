@@ -17,14 +17,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout your repo
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install
-      - run: bun run build
+
+      # Step 2: Setup Node.js (safer for Vite builds)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # Step 3: Install dependencies
+      - run: npm install
+
+      # Step 4: Build the project (with environment variables)
+      - run: npm run build
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
           VITE_SUPABASE_PROJECT_ID: ${{ secrets.VITE_SUPABASE_PROJECT_ID }}
+
+      # Step 5: Confirm contents of dist (debug)
+      - run: ls -R dist
+
+      # Step 6: Upload dist folder for GitHub Pages
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
