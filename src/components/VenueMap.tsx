@@ -19,7 +19,7 @@ const VenueMap = () => {
         <div className="gold-divider" />
 
         <p className="font-sans text-sm text-muted-foreground mb-8">
-          Dewan Seri Endon, Persiaran Sultan, Seksyen 14, 40000 Shah Alam, Selangor
+         Address
         </p>
 
         <motion.div
